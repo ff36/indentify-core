@@ -1,1 +1,1 @@
-###Auth8 (Experimental)
+###Auth8 Server (Experimental)

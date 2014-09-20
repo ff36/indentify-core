@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/3.0/modelMap"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
+	 project-version="6">
+	<property name="defaultPackage" value="com.auth8.persistent"/>
+	<db-entity name="SETTING" schema="PUBLIC">
+		<db-attribute name="ID" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="19"/>
+		<db-attribute name="NAME" type="VARCHAR" length="2147483647"/>
+		<db-attribute name="SETTING_VALUE" type="VARCHAR" length="2147483647"/>
+	</db-entity>
+	<db-entity name="SUBJECT" schema="PUBLIC">
+		<db-attribute name="ID" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="19"/>
+		<db-attribute name="PRIVATEKEY" type="VARCHAR" length="2147483647"/>
+		<db-attribute name="PUBLICKEY" type="VARCHAR" length="2147483647"/>
+	</db-entity>
+	<obj-entity name="Setting" className="com.auth8.persistent.Setting" dbEntityName="SETTING">
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
+		<obj-attribute name="value" type="java.lang.String" db-attribute-path="SETTING_VALUE"/>
+	</obj-entity>
+	<obj-entity name="User" className="com.auth8.persistent.User" dbEntityName="SUBJECT">
+		<obj-attribute name="privateKey" type="java.lang.String" db-attribute-path="PRIVATEKEY"/>
+		<obj-attribute name="publicKey" type="java.lang.String" db-attribute-path="PUBLICKEY"/>
+	</obj-entity>
+</data-map>

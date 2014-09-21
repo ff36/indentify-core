@@ -44,6 +44,7 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(com.auth8.doc.JSONDocController.class);
         resources.add(com.auth8.error.BadURIException.class);
+        resources.add(com.auth8.jaxrs.impl.V1Authenticate.class);
         resources.add(com.auth8.jaxrs.impl.V1Settings.class);
         resources.add(com.auth8.security.AuthenticationFilter.class);
     }

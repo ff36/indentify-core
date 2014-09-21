@@ -7,11 +7,9 @@ package com.auth8.jaxrs;
 
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
-import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 /**
  * Settings endpoint interface. Endpoints are defined as interfaces for

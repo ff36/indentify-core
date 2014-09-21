@@ -5,9 +5,6 @@
  */
 package com.auth8.jaxrs;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.auth8.error.RestError;
 import com.auth8.misc.PS;
 import static com.auth8.util.RequestLog.log;
 import java.util.HashMap;

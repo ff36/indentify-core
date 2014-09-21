@@ -41,7 +41,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The phantom configuration request endpoints.
+ * The auth8 configuration request endpoints.
  *
  * @version 1.0-beta
  * @since Build 1.0-alpha (Jun 21, 2014)

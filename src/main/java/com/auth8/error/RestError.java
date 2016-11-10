@@ -64,6 +64,7 @@ public class RestError {
         INVALID_CREDENTIALS,
         EXPIRED_TIMESTAMP,
         UNKNOWN_ERROR,
+        DEVICE_NOT_REGISTERED,
         SERVER_ERROR;
     }
 
@@ -113,6 +114,13 @@ public class RestError {
                 this.code = 503;
                 this.error.put("reason", "server_error");
                 this.error.put("message", "Internal server error.");
+                this.error.put("location_type", "internal");
+                this.error.put("location", "server");
+                break;
+            case DEVICE_NOT_REGISTERED:
+                this.code = 503;
+                this.error.put("reason", "device_not_registered");
+                this.error.put("message", "No device is registered for this email.");
                 this.error.put("location_type", "internal");
                 this.error.put("location", "server");
                 break;

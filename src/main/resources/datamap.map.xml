@@ -4,16 +4,27 @@
 	 xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
 	 project-version="6">
 	<property name="defaultPackage" value="com.auth8.persistent"/>
+	<db-entity name="DEVICE" schema="PUBLIC">
+		<db-attribute name="EMAIL" type="VARCHAR" isMandatory="true" length="100"/>
+		<db-attribute name="ID" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="20"/>
+		<db-attribute name="NAME" type="VARCHAR" length="100"/>
+		<db-attribute name="REGID" type="VARCHAR" isMandatory="true" length="500"/>
+	</db-entity>
 	<db-entity name="SETTING" schema="PUBLIC">
-		<db-attribute name="ID" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="19"/>
+		<db-attribute name="ID" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="20"/>
 		<db-attribute name="NAME" type="VARCHAR" length="2147483647"/>
 		<db-attribute name="SETTING_VALUE" type="VARCHAR" length="2147483647"/>
 	</db-entity>
 	<db-entity name="SUBJECT" schema="PUBLIC">
-		<db-attribute name="ID" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="19"/>
+		<db-attribute name="ID" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="20"/>
 		<db-attribute name="PRIVATEKEY" type="VARCHAR" length="2147483647"/>
 		<db-attribute name="PUBLICKEY" type="VARCHAR" length="2147483647"/>
 	</db-entity>
+	<obj-entity name="Device" className="com.auth8.persistent.Device" dbEntityName="DEVICE">
+		<obj-attribute name="email" type="java.lang.String" db-attribute-path="EMAIL"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
+		<obj-attribute name="regid" type="java.lang.String" db-attribute-path="REGID"/>
+	</obj-entity>
 	<obj-entity name="Setting" className="com.auth8.persistent.Setting" dbEntityName="SETTING">
 		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
 		<obj-attribute name="value" type="java.lang.String" db-attribute-path="SETTING_VALUE"/>

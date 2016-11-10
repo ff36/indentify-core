@@ -21,11 +21,19 @@ public interface Authenticate {
      *
      * @param request
      * @param number
+     * @param authority
+     * @param timeout
+     * @param points
+     * @param purpose
      * @return An HTTP Response object containing the response code, header and
      * the response payload.
      */
     public Response authenticate(
             @Context HttpServletRequest request, 
-            String number);
+            String number,
+            String authority,
+            int timeout,
+            int points,
+            String purpose);
     
 }

@@ -151,13 +151,13 @@ public class Main {
 
             // Read the settings to see if we need TLS
             try {
-                Expression tlsE = ExpressionFactory.likeExp(Setting.NAME.getName(), PS.SETTINGS_TLS_KEY);
+                Expression tlsE = ExpressionFactory.likeExp(Setting.NAME_PROPERTY, PS.SETTINGS_TLS_KEY);
                 SelectQuery tlsQ = new SelectQuery(Setting.class, tlsE);
                 Setting tls = (Setting) context.performQuery(tlsQ).get(0);
 
                 if (Boolean.parseBoolean(tls.getValue())) {
                     // Get the host
-                    Expression hostE = ExpressionFactory.likeExp(Setting.NAME.getName(), PS.SETTINGS_HOST_KEY);
+                    Expression hostE = ExpressionFactory.likeExp(Setting.NAME_PROPERTY, PS.SETTINGS_HOST_KEY);
                     SelectQuery hostQ = new SelectQuery(Setting.class, hostE);
                     Setting host = (Setting) context.performQuery(hostQ).get(0);
 
@@ -198,15 +198,15 @@ public class Main {
             String currentDir = new File(protectionDomain.getCodeSource().getLocation().getPath()).getParent();
             resetTempDirectory(webapp, currentDir);
 
-            // This webapp will use jsps and jstl. We need to enable the AnnotationConfiguration in order to correctly 
-            // set up the jsp container
-            org.eclipse.jetty.webapp.Configuration.ClassList classlist = org.eclipse.jetty.webapp.Configuration.ClassList.setServerDefault(server);
-            classlist.addBefore("org.eclipse.jetty.webapp.JettyWebXmlConfiguration", "org.eclipse.jetty.annotations.AnnotationConfiguration");
-
-            // Set the ContainerIncludeJarPattern so that jetty examines these container-path jars for tlds, web-fragments etc. 
-            // If you omit the jar that contains the jstl .tlds, the jsp engine will scan for them instead. 
-            webapp.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern",
-                    ".*/[^/]*servlet-api-[^/]*\\.jar$|.*/javax.servlet.jsp.jstl-.*\\.jar$|.*/[^/]*taglibs.*\\.jar$");
+//            // This webapp will use jsps and jstl. We need to enable the AnnotationConfiguration in order to correctly 
+//            // set up the jsp container
+//            org.eclipse.jetty.webapp.Configuration.ClassList classlist = org.eclipse.jetty.webapp.Configuration.ClassList.setServerDefault(server);
+//            classlist.addBefore("org.eclipse.jetty.webapp.JettyWebXmlConfiguration", "org.eclipse.jetty.annotations.AnnotationConfiguration");
+//
+//            // Set the ContainerIncludeJarPattern so that jetty examines these container-path jars for tlds, web-fragments etc. 
+//            // If you omit the jar that contains the jstl .tlds, the jsp engine will scan for them instead. 
+//            webapp.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern",
+//                    ".*/[^/]*servlet-api-[^/]*\\.jar$|.*/javax.servlet.jsp.jstl-.*\\.jar$|.*/[^/]*taglibs.*\\.jar$");
 
             // Add handlers for server
             HandlerCollection handlerCollection = new HandlerCollection();
@@ -492,12 +492,12 @@ public class Main {
             // The database exists so just update and extract properties.
             // Update the version and build
 
-            Expression versionE = ExpressionFactory.likeExp(Setting.NAME.getName(), PS.SETTINGS_VERSION_KEY);
+            Expression versionE = ExpressionFactory.likeExp(Setting.NAME_PROPERTY, PS.SETTINGS_VERSION_KEY);
             SelectQuery versionQ = new SelectQuery(Setting.class, versionE);
             Setting version = (Setting) context.performQuery(versionQ).get(0);
             version.setValue(current.getString(PS.BUNDLE_VERSION_KEY));
 
-            Expression buildE = ExpressionFactory.likeExp(Setting.NAME.getName(), PS.SETTINGS_BUILD_KEY);
+            Expression buildE = ExpressionFactory.likeExp(Setting.NAME_PROPERTY, PS.SETTINGS_BUILD_KEY);
             SelectQuery buildQ = new SelectQuery(Setting.class, buildE);
             Setting build = (Setting) context.performQuery(buildQ).get(0);
             build.setValue(current.getString(PS.BUNDLE_BUILD_KEY));
@@ -506,7 +506,7 @@ public class Main {
 
             // Get the system keys
             try {
-                Expression sdKeyE = ExpressionFactory.likeExp(Setting.NAME.getName(), PS.SETTINGS_SHUTDOWN_KEY);
+                Expression sdKeyE = ExpressionFactory.likeExp(Setting.NAME_PROPERTY, PS.SETTINGS_SHUTDOWN_KEY);
                 SelectQuery sdKeyQ = new SelectQuery(Setting.class, sdKeyE);
                 Setting sdKey = (Setting) context.performQuery(sdKeyQ).get(0);
 

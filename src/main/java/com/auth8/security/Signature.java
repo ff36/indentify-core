@@ -54,7 +54,7 @@ public class Signature {
     public static String signUrl(String stringToSign, String publicKey) throws IOException {
 
         ObjectContext context = new ServerRuntime("cayenne-project.xml").newContext();
-        Expression userE = ExpressionFactory.likeExp(User.PUBLIC_KEY.getName(), publicKey);
+        Expression userE = ExpressionFactory.likeExp(User.PUBLIC_KEY_PROPERTY, publicKey);
         SelectQuery userQ = new SelectQuery(User.class, userE);
         User user = (User) context.performQuery(userQ).get(0);
 

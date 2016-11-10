@@ -45,6 +45,7 @@ public class ApplicationConfig extends Application {
         resources.add(com.auth8.doc.JSONDocController.class);
         resources.add(com.auth8.error.BadURIException.class);
         resources.add(com.auth8.jaxrs.impl.V1Authenticate.class);
+        resources.add(com.auth8.jaxrs.impl.V1RegDevice.class);
         resources.add(com.auth8.jaxrs.impl.V1Settings.class);
         resources.add(com.auth8.security.AuthenticationFilter.class);
     }

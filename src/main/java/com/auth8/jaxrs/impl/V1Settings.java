@@ -190,7 +190,7 @@ public class V1Settings implements Settings {
         // Get the user 
         for (String publicKey : publicKeys) {
 
-            Expression userE = ExpressionFactory.likeExp(User.PUBLIC_KEY.getName(), publicKey);
+            Expression userE = ExpressionFactory.likeExp(User.PUBLIC_KEY_PROPERTY, publicKey);
             SelectQuery userQ = new SelectQuery(User.class, userE);
             User user = (User) context.performQuery(userQ).get(0);
 
